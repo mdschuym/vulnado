@@ -99,6 +99,11 @@ resource "aws_instance" "receiver" {
 yum update
 yum install -y nmap
 EOF
+  metadata_options {
+    http_endpoint = "enabled"
+    http_tokens = "required"
+    http_put_response_hop_limit = 1
+  }
   tags = {
     Name = "VulnadoReverseShellReceiver"
   }
